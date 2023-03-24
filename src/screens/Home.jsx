@@ -70,6 +70,10 @@ const Home = () => {
         }
     ])
 
+    const total = () => {
+        return state.reduce((acc, curent) => (curent.qty * curent.price) + acc, 0)
+    }
+
     return (
         <div className='w-[30rem] h-[30rem]  bg-gray-100 rounded shadow-lg p-2 flex flex-col'>
             <div className=' flex flex-wrap flex-col flex-1'>
@@ -79,7 +83,14 @@ const Home = () => {
                     })
                 }
             </div>
-            <div className='h-20 border-t-2 border-t-gray-500'>total</div>
+            <div className='h-20 border-t-2 border-t-gray-500 flex'>
+                <span className=' w-32 flex justify-center items-center'>
+                    <h4>price</h4>
+                </span>
+                <span className=' flex-1 flex justify-end items-center'>
+                    <h4 className='pr-4'>${total()}</h4>
+                </span>
+            </div>
         </div>
     )
 }
